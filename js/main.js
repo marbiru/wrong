@@ -1,15 +1,11 @@
 // this will run as soon as the page is started
 $(function(){
- $( "#question" ).text(calculateQuestion());
- // this will run on every button click
- $( "#another" ).click(function(){
-     $( "#question" ).text(calculateQuestion());       
- });
+ createProblem();
 });
 
 var currentProblem = "";
 
-function calculateQuestion() {
+function createProblem() {
   var randomNumber = Math.floor(Math.random() * problems.length);
   currentProblem = problems[randomNumber];
    problems.splice(randomNumber, 1);
@@ -42,8 +38,9 @@ function calculateAnswer() {
 
 $(function(){
  $( "#another" ).click(function(){
-     $( "#question" ).html(calculateQuestion());
+     createProblem();
      $( "#output" ).html("&nbsp;");
+     $( "#input" ).val("");
      $( "#submit" ).show();
      $( "#another" ).hide();
   });       
