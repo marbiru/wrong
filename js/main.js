@@ -7,10 +7,15 @@ $(function(){
  });
 });
 
+var currentProblem = "";
+
 function calculateQuestion() {
-  var currentQuestion = questions[1] // placeholder
-  $( "#question" ).text(currentQuestion[0]);
-  $( "#unit" ).text(currentQuestion[1]);
+  var randomNumber = Math.floor(Math.random() * problems.length);
+  currentProblem = problems[randomNumber];
+   problems.splice(randomNumber, 1);
+  var currentQuestion = currentProblem[0];
+  $( "#question" ).text(currentQuestion);
+  $( "#unit" ).text(currentProblem[1]);
 };
 
 $(function(){
@@ -22,9 +27,9 @@ $(function(){
 });
 
 function calculateAnswer() {
-  var currentQuestion = questions[1];
+  console.log(currentProblem);
   var userAnswer = $( "#input" ).val();
-  var correctAnswer = currentQuestion[2];
+  var correctAnswer = currentProblem[2];
   if (correctAnswer < userAnswer)
       var factor = userAnswer/correctAnswer;
   else if (correctAnswer > userAnswer)
@@ -32,11 +37,14 @@ function calculateAnswer() {
   else
     var factor = "ERROR"
   factor = Math.round(factor);
-  return "The correct answer is: <br />" + currentQuestion[2] + " " + currentQuestion[1] +"<br /><br /> You are wrong by a factor of <br />" + factor;
+  return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> You are wrong by a factor of <br />" + factor;
 };
 
 $(function(){
  $( "#another" ).click(function(){
-     $( "#question" ).html(calculateAnswer());
+     $( "#question" ).html(calculateQuestion());
+     $( "#output" ).html("&nbsp;");
+     $( "#submit" ).show();
+     $( "#another" ).hide();
   });       
 });
