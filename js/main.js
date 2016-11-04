@@ -6,9 +6,14 @@ $(function(){
 var currentProblem = "";
 
 function createProblem() {
-  var randomNumber = Math.floor(Math.random() * problems.length);
-  currentProblem = problems[randomNumber];
-   problems.splice(randomNumber, 1);
+  if (problems.length > 0) {
+    var randomNumber = Math.floor(Math.random() * problems.length);
+    currentProblem = problems[randomNumber];
+    problems.splice(randomNumber, 1);
+  } else {
+    currentProblem = ["No more questions, sorry!", "", ""];
+  };
+  
   var currentQuestion = currentProblem[0];
   $( "#question" ).text(currentQuestion);
   $( "#unit" ).text(currentProblem[1]);
