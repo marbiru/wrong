@@ -34,7 +34,15 @@ function calculateAnswer() {
   if (correctAnswer/userAnswer > 0.5 && correctAnswer/userAnswer < 2) {
       var factor = userAnswer/correctAnswer;
       factor = Math.round(factor);
-      return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"You got close – hmphh, lucky guess";
+      return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> You got close – hmphh, lucky guess";
+  } else if (correctAnswer/userAnswer > 0.1 && correctAnswer/userAnswer < 1) {
+      var factor = userAnswer/correctAnswer;
+      factor = Math.round(factor);
+      return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> Not so bad – you're only high by a factor of " + factor;
+  } else if (correctAnswer/userAnswer > 1 && correctAnswer/userAnswer < 10) {
+      var factor = correctAnswer/userAnswer;
+      factor = Math.round(factor);
+      return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> Not so bad – you're only low by a factor of " + factor;
   } else if (correctAnswer < userAnswer) {
       var factor = userAnswer/correctAnswer;
       factor = Math.round(factor);
