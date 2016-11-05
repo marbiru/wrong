@@ -31,14 +31,20 @@ function calculateAnswer() {
   console.log(currentProblem);
   var userAnswer = $( "#input" ).val();
   var correctAnswer = currentProblem[2];
-  if (correctAnswer < userAnswer)
+  if (correctAnswer/userAnswer > 0.5 && correctAnswer/userAnswer < 2) {
       var factor = userAnswer/correctAnswer;
-  else if (correctAnswer > userAnswer)
+      factor = Math.round(factor);
+      return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"You got close – hmphh, lucky guess";
+  } else if (correctAnswer < userAnswer) {
+      var factor = userAnswer/correctAnswer;
+      factor = Math.round(factor);
+      return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> You are high by a factor of <br />" + factor;
+  } else if (correctAnswer > userAnswer) {
     var factor = correctAnswer/userAnswer;
-  else
-    var factor = "ERROR"
-  factor = Math.round(factor);
-  return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> You are wrong by a factor of <br />" + factor;
+    factor = Math.round(factor);
+    return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> You are low by a factor of <br />" + factor;
+  } else
+    return "Something bad happened";
 };
 
 $(function(){
