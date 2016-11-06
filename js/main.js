@@ -27,15 +27,18 @@ $(function(){
  });
 });
 
-function numberInWords() {
-  var userGuess = $( "#input" ).val();
-  var firstDigit = userGuess[0];
-  var secondDigit = userGuess[1];
-  var userGuessLength = userGuess.length;
-  if (userGuess[0] == 9 && userGuess[1] >= 5) {
+function numberInWords(number) {
+  var firstDigit = number[0];
+  console.log("first digit = " + firstDigit);
+  var secondDigit = number[1];
+  console.log("second digit = " + secondDigit);
+  var numberLength = number.length;
+  console.log("number length = " + numberLength);
+
+  if (number[0] == 9 && number[1] >= 5) {
     firstDigit = 1;
-    userGuessLength ++;
-  } else if (userGuess[1] >= 5) {
+    numberLength ++;
+  } else if (number[1] >= 5) {
     firstDigit ++;
   }
   
@@ -62,48 +65,52 @@ function numberInWords() {
   " quintillion",
   ];
   
-  if (userGuessLength == 0)
-    userApprox = "";
-  else if (userGuessLength < suffixes.length)
-      var userApprox = "~" + firstDigit + suffixes[userGuessLength] + " "
-  else var userApprox = "like, whoah, a lot of "
+  if (numberLength == 0)
+    approxNumber = "";
+  else if (numberLength < suffixes.length)
+      var approxNumber = "roughly " + firstDigit + suffixes[numberLength]
+  else var approxNumber = "like, whoah, a lot of"
   
-  return userApprox + currentProblem[1];
+  return approxNumber;
 };
 
 $( "#input" ).keyup(function () {
-  $( "#unit" ).html(numberInWords());
+  var userGuess = $( "#input" ).val();
+  $( "#unit" ).html(numberInWords(userGuess) + " " + currentProblem[1]);
 });
 
 function calculateAnswer() {
   var userAnswer = $( "#input" ).val();
   var correctAnswer = currentProblem[2];
-  var correctAnswerDisplay = correctAnswer.toLocaleString();
+  console.log(correctAnswer);
+  var correctAnswerInWords = numberInWords(String(correctAnswer));
+  var correctAnswerDisplay = correctAnswer.toLocaleString() + " " + currentProblem[1] + " <br /> (" + correctAnswerInWords + ")";
+
   if (correctAnswer/userAnswer > 0.5 && correctAnswer/userAnswer < 2) {
       var factor = userAnswer/correctAnswer;
       factor = Math.round(factor);
       factor = factor.toLocaleString();
-      return "The correct answer is: <br />" + correctAnswerDisplay + " " + currentProblem[1] +"<br /><br /> You got close – hmphh, lucky guess";
+      return "The correct answer is: <br />" + correctAnswerDisplay + "<br /><br /> You got close – hmphh, lucky guess";
   } else if (correctAnswer/userAnswer > 0.1 && correctAnswer/userAnswer < 1) {
       var factor = userAnswer/correctAnswer;
       factor = Math.round(factor);
       factor = factor.toLocaleString();
-      return "The correct answer is: <br />" + correctAnswerDisplay + " " + currentProblem[1] +"<br /><br /> Not so bad – you're only high by a factor of " + factor;
+      return "The correct answer is: <br />" + correctAnswerDisplay + "<br /><br /> Not so bad – you're only high by a factor of " + factor;
   } else if (correctAnswer/userAnswer > 1 && correctAnswer/userAnswer < 10) {
       var factor = correctAnswer/userAnswer;
       factor = Math.round(factor);
       factor = factor.toLocaleString();
-      return "The correct answer is: <br />" + correctAnswerDisplay + " " + currentProblem[1] +"<br /><br /> Not so bad – you're only low by a factor of " + factor;
+      return "The correct answer is: <br />" + correctAnswerDisplay + "<br /><br /> Not so bad – you're only low by a factor of " + factor;
   } else if (correctAnswer < userAnswer) {
       var factor = userAnswer/correctAnswer;
       factor = Math.round(factor);
       factor = factor.toLocaleString();
-      return "The correct answer is: <br />" + correctAnswerDisplay + " " + currentProblem[1] +"<br /><br /> You are high by a factor of <br />" + factor;
+      return "The correct answer is: <br />" + correctAnswerDisplay + "<br /><br /> You are high by a factor of <br />" + factor;
   } else if (correctAnswer > userAnswer) {
     var factor = correctAnswer/userAnswer;
     factor = Math.round(factor);
     factor = factor.toLocaleString();
-    return "The correct answer is: <br />" + correctAnswerDisplay + " " + currentProblem[1] +"<br /><br /> You are low by a factor of <br />" + factor;
+    return "The correct answer is: <br />" + correctAnswerDisplay + "<br /><br /> You are low by a factor of <br />" + factor;
   } else
     return "Something bad happened";
 };

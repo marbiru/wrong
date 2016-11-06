@@ -57,13 +57,3 @@ var astroDistances = [
 ];
 
 var problems = GDPs.concat(populations, marketCaps, richPeople, astroDistances);
-
-
-
-
-
-
-
-
-
-
