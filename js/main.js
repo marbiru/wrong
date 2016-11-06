@@ -46,7 +46,7 @@ function numberInWords() {
   " hundred",
   " thousand",
   "0 thousand",
-  "000 thousand",
+  "00 thousand",
   " million",
   "0 million",
   "00 million",
