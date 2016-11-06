@@ -27,8 +27,51 @@ $(function(){
  });
 });
 
+function numberInWords() {
+  var userGuess = $( "#input" ).val();
+  console.log(userGuess);
+  // userGuess = Math.round(userGuess);
+  var firstDigit = userGuess[0];
+  console.log(firstDigit);
+  var userGuessLength = userGuess.length;
+  console.log(userGuessLength);
+  var suffixes = [
+  " ",
+  " ",
+  "0 ",
+  " hundred",
+  " thousand",
+  "0 thousand",
+  " hundred thousand",
+  " million",
+  "0 million",
+  " hundred million",
+  " billion",
+  "0 billion",
+  " hundred billion",
+  " trillion",
+  "0 trillion",
+  " hundred trillion",
+  " quadrillion",
+  "0 quadrillion",
+  " hundred quadrillion",
+  " quintillion",
+  ];
+  
+  if (userGuessLength == 0)
+    userApprox = "";
+  else if (userGuessLength < suffixes.length)
+      var userApprox = "~" + firstDigit + suffixes[userGuessLength] + " "
+    else var userApprox = "too many "
+  
+  return userApprox + currentProblem[1];
+};
+
+$( "#input" ).keyup(function () {
+  $( "#unit" ).html(numberInWords());
+});
+
 function calculateAnswer() {
-  console.log(currentProblem);
   var userAnswer = $( "#input" ).val();
   var correctAnswer = currentProblem[2];
   if (correctAnswer/userAnswer > 0.5 && correctAnswer/userAnswer < 2) {
