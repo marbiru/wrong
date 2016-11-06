@@ -30,7 +30,6 @@ $(function(){
 function numberInWords() {
   var userGuess = $( "#input" ).val();
   var firstDigit = userGuess[0];
-  console.log(firstDigit);
   var secondDigit = userGuess[1];
   var userGuessLength = userGuess.length;
   if (userGuess[0] == 9 && userGuess[1] >= 5) {
@@ -39,8 +38,6 @@ function numberInWords() {
   } else if (userGuess[1] >= 5) {
     firstDigit ++;
   }
-
-  console.log("length = " + userGuessLength);
   
   var suffixes = [
   " ",
@@ -49,19 +46,19 @@ function numberInWords() {
   " hundred",
   " thousand",
   "0 thousand",
-  " hundred thousand",
+  "00 thousand",
   " million",
   "0 million",
-  " hundred million",
+  "00 million",
   " billion",
   "0 billion",
-  " hundred billion",
+  "00 billion",
   " trillion",
   "0 trillion",
-  " hundred trillion",
+  "00 trillion",
   " quadrillion",
   "0 quadrillion",
-  " hundred quadrillion",
+  "00 quadrillion",
   " quintillion",
   ];
   
@@ -69,7 +66,7 @@ function numberInWords() {
     userApprox = "";
   else if (userGuessLength < suffixes.length)
       var userApprox = "~" + firstDigit + suffixes[userGuessLength] + " "
-    else var userApprox = "like, whoah, a lot of "
+  else var userApprox = "like, whoah, a lot of "
   
   return userApprox + currentProblem[1];
 };
