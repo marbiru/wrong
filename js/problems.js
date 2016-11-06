@@ -1,14 +1,14 @@
 var gdpSource = "https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)";
 
 var GDPs = [
-["What is the annual GDP of the US?", "US Dollars", 1860000000000, ],
-["What is the annual GDP of China?", "US Dollars", 1140000000000, gdpSource],
-["What is the annual GDP of Japan?", "US Dollars", 473000000000, gdpSource],
-["What is the annual GDP of Germany?", "US Dollars", 349000000000, gdpSource],
-["What is the annual GDP of the UK?", "US Dollars", 265000000000, gdpSource],
-["What is the annual GDP of India?", "US Dollars", 225000000000, gdpSource],
-["What is the annual GDP of South Korea?", "US Dollars", 140000000000, gdpSource],
-["What is the annual GDP of Russia?", "US Dollars", 127000000000, gdpSource],
+["What is the annual GDP of the US?", "US Dollars", 18600000000000, ],
+["What is the annual GDP of China?", "US Dollars", 11400000000000, gdpSource],
+["What is the annual GDP of Japan?", "US Dollars", 4730000000000, gdpSource],
+["What is the annual GDP of Germany?", "US Dollars", 3490000000000, gdpSource],
+["What is the annual GDP of the UK?", "US Dollars", 2650000000000, gdpSource],
+["What is the annual GDP of India?", "US Dollars", 2250000000000, gdpSource],
+["What is the annual GDP of South Korea?", "US Dollars", 1400000000000, gdpSource],
+["What is the annual GDP of Russia?", "US Dollars", 1270000000000, gdpSource],
 ];
 
 var populationSource = "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population";
