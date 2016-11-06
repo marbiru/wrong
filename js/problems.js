@@ -1,9 +1,3 @@
-var problems = [
-["What is the annual GDP of China?", "US Dollars", 1140000000000],
-["What is the population of Indonesia?", "people", 249900000 ],
-["What is the market cap of Amazon?", "US Dollars", 358770000000]
-];
-
 var gdpSource = "https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)";
 
 var GDPs = [
@@ -53,6 +47,16 @@ var richPeople = [
 ["What is the Taylor Swift's net worth?", "US Dollars", 250000000, "https://en.wikipedia.org/wiki/Taylor_Swift"],
 ];
 
+var astroSource = "http://www.wolframalpha.com/";
+
+var astroDistances = [
+["How far is the Sun from Earth?", "Kilometers", 149600000, astroSource],
+["How far is the Moon from Earth?", "Kilometers", 385000, astroSource],
+["How far is the Moon from Alpha Centurai (nearest star system)?", "Kilometers", 41530000000000, astroSource],
+["What is the speed of light?", "metres per second", 299800000, astroSource],
+];
+
+var problems = GDPs.concat(populations, marketCaps, richPeople, astroDistances);
 
 
 
