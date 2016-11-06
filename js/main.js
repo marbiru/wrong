@@ -29,12 +29,19 @@ $(function(){
 
 function numberInWords() {
   var userGuess = $( "#input" ).val();
-  console.log(userGuess);
-  // userGuess = Math.round(userGuess);
   var firstDigit = userGuess[0];
   console.log(firstDigit);
+  var secondDigit = userGuess[1];
   var userGuessLength = userGuess.length;
-  console.log(userGuessLength);
+  if (userGuess[0] == 9 && userGuess[1] >= 5) {
+    firstDigit = 1;
+    userGuessLength ++;
+  } else if (userGuess[1] >= 5) {
+    firstDigit ++;
+  }
+
+  console.log("length = " + userGuessLength);
+  
   var suffixes = [
   " ",
   " ",
@@ -62,7 +69,7 @@ function numberInWords() {
     userApprox = "";
   else if (userGuessLength < suffixes.length)
       var userApprox = "~" + firstDigit + suffixes[userGuessLength] + " "
-    else var userApprox = "too many "
+    else var userApprox = "like, whoah, a lot of "
   
   return userApprox + currentProblem[1];
 };
