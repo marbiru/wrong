@@ -78,26 +78,32 @@ $( "#input" ).keyup(function () {
 function calculateAnswer() {
   var userAnswer = $( "#input" ).val();
   var correctAnswer = currentProblem[2];
+  var correctAnswerDisplay = correctAnswer.toLocaleString();
   if (correctAnswer/userAnswer > 0.5 && correctAnswer/userAnswer < 2) {
       var factor = userAnswer/correctAnswer;
       factor = Math.round(factor);
-      return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> You got close – hmphh, lucky guess";
+      factor = factor.toLocaleString();
+      return "The correct answer is: <br />" + correctAnswerDisplay + " " + currentProblem[1] +"<br /><br /> You got close – hmphh, lucky guess";
   } else if (correctAnswer/userAnswer > 0.1 && correctAnswer/userAnswer < 1) {
       var factor = userAnswer/correctAnswer;
       factor = Math.round(factor);
-      return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> Not so bad – you're only high by a factor of " + factor;
+      factor = factor.toLocaleString();
+      return "The correct answer is: <br />" + correctAnswerDisplay + " " + currentProblem[1] +"<br /><br /> Not so bad – you're only high by a factor of " + factor;
   } else if (correctAnswer/userAnswer > 1 && correctAnswer/userAnswer < 10) {
       var factor = correctAnswer/userAnswer;
       factor = Math.round(factor);
-      return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> Not so bad – you're only low by a factor of " + factor;
+      factor = factor.toLocaleString();
+      return "The correct answer is: <br />" + correctAnswerDisplay + " " + currentProblem[1] +"<br /><br /> Not so bad – you're only low by a factor of " + factor;
   } else if (correctAnswer < userAnswer) {
       var factor = userAnswer/correctAnswer;
       factor = Math.round(factor);
-      return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> You are high by a factor of <br />" + factor;
+      factor = factor.toLocaleString();
+      return "The correct answer is: <br />" + correctAnswerDisplay + " " + currentProblem[1] +"<br /><br /> You are high by a factor of <br />" + factor;
   } else if (correctAnswer > userAnswer) {
     var factor = correctAnswer/userAnswer;
     factor = Math.round(factor);
-    return "The correct answer is: <br />" + currentProblem[2] + " " + currentProblem[1] +"<br /><br /> You are low by a factor of <br />" + factor;
+    factor = factor.toLocaleString();
+    return "The correct answer is: <br />" + correctAnswerDisplay + " " + currentProblem[1] +"<br /><br /> You are low by a factor of <br />" + factor;
   } else
     return "Something bad happened";
 };
