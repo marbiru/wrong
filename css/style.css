@@ -23,7 +23,7 @@ input {
 	background-color: #6f0e0e;
 }
 
-.regenerate {
+.regenerate, .output {
 	display:none;
 }
 
