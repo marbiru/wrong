@@ -21,6 +21,7 @@ function createProblem() {
 
 $(function(){
  $( "#submit" ).click(function(){
+     $( "#output" ).show();
      $( "#output" ).html(calculateAnswer());
      $( "#submit" ).hide();
      $( "#another" ).show();
@@ -29,11 +30,8 @@ $(function(){
 
 function numberInWords(number) {
   var firstDigit = number[0];
-  console.log("first digit = " + firstDigit);
   var secondDigit = number[1];
-  console.log("second digit = " + secondDigit);
   var numberLength = number.length;
-  console.log("number length = " + numberLength);
 
   if (number[0] == 9 && number[1] >= 5) {
     firstDigit = 1;
@@ -82,7 +80,6 @@ $( "#input" ).keyup(function () {
 function calculateAnswer() {
   var userAnswer = $( "#input" ).val();
   var correctAnswer = currentProblem[2];
-  console.log(correctAnswer);
   var correctAnswerInWords = numberInWords(String(correctAnswer));
   var correctAnswerDisplay = correctAnswer.toLocaleString() + " " + currentProblem[1] + " <br /> (" + correctAnswerInWords + ")";
 
@@ -118,6 +115,7 @@ function calculateAnswer() {
 $(function(){
  $( "#another" ).click(function(){
      createProblem();
+     $( "#output" ).hide();
      $( "#output" ).html("&nbsp;");
      $( "#input" ).val("");
      $( "#submit" ).show();
