@@ -1,2 +1,3 @@
-class Question < ActiveRecord::Base
+class Problem < ActiveRecord::Base
+  has_many :responses
 end
