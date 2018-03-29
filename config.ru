@@ -1,4 +1,4 @@
-require_relative './config/environment.rb'
+require './environment.rb'
 
 # see :MethodOverride http://www.sinatrarb.com/configuration.html
 use Rack::MethodOverride

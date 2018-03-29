@@ -1,10 +1,15 @@
 source 'https://rubygems.org'
-ruby "~> 2.3.1"
+ruby "~> 2.5"
 
-gem 'activerecord'
 gem 'pg'
 gem 'rake'
 gem 'require_all'
-gem 'shotgun'
 gem 'sinatra'
 gem 'sinatra-activerecord'
+gem 'sinatra-cross_origin'
+
+group :development do
+  gem 'shotgun'
+  gem 'annotate'
+  gem 'pry'
+end

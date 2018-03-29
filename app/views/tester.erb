@@ -1,0 +1,22 @@
+<html>
+  <div class="home">
+    <div class="page-title">
+      <h2> Tester </h2>
+      <p>
+    </div>
+    <div class="time">
+      <p>
+      <br>
+      <br>
+      <form action="/init" method="get" >
+        <input id="init-button" type="button" value="INIT" onclick="storeProblems()">
+      </form>
+        <form action="/test" method="get" >
+          <input id="test-button" type="button" value="TEST" onclick="serverGet(this, '/test')">
+        </form>
+    </div>
+  </div>
+  <div>
+    <script type=text/javascript src="js/helpers.js"> </script>
+  </div>
+</html>
