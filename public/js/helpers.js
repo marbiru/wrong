@@ -68,10 +68,10 @@ function storeProblemsInSession() {
 }
 
 function popProblemFromSession() {
-  if (getFromSession('problems').length < 1) {
+  var problems = getFromSession('problems');
+  if (problems.length < 1) {
     return 'empty';
   }
-  var problems = getFromSession('problems');
   var problem = problems[problems.length - 1];
   var popped = problems.slice(0, -1);
 

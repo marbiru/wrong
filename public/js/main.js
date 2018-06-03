@@ -3,7 +3,7 @@ var currentProblem;
 // this will run as soon as the page is started
 $(function() {
   storeProblemsInSession();
-  createProblem();
+  setTimeout(function(){createProblem()}, 1000);
 });
 
 function createProblem() {
@@ -17,6 +17,19 @@ function createProblem() {
   $('#question').text(currentQuestion);
   $('#unit').text(currentProblem.unit);
 }
+
+// capture enter key for submit
+$(function() {
+  $('#input').keypress(function(e) {
+    if (e.which == 13) {
+      $('#input').blur();
+      $('#output').show();
+      $('#output').html(calculateAnswer());
+      $('#submit').hide();
+      $('#another').show();
+    }
+  });
+});
 
 $(function() {
   $('#submit').click(function() {
